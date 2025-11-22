@@ -31,51 +31,69 @@ body, html{
     text-decoration: none;
 }
 
-/*NAVBAR----------------------------------------------------------*/
-.navbar{
+/* Navbar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
     padding: 15px 20px;
     border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    z-index: 10;
 }
-.logo-container{
+
+.logo-container {
     display: flex;
     align-items: center;
 }
-.logo{
+.logo-link{
+    text-decoration: none;
+}
+.logo {
     height: 50px;
     margin-right: 10px;
 }
-.logo-text{
+
+.logo-text {
     display: flex;
     flex-direction: column;
+    
 }
-.logo-link {
-    text-decoration: none;
-}
-.clinic-name{
+
+.clinic-name {
     font-size: 15px;
     font-weight: 500;
     color: black;
+        text-decoration: none;
 }
-.clinic-ad-ar{
+
+.clinic-ad-ar {
     font-size: 25px;
     font-weight: bold;
     color: black;
 }
-.nav-links{
+
+.nav-links {
     display: flex;
     align-items: center;
+    gap: 25px; /* nice horizontal spacing for desktop */
 }
-.nav-item{
-    margin-right: 25px;
+
+.nav-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px; /* spacing between links */
+}
+
+.nav-item {
     color: black;
     text-decoration: none;
     font-weight: 500;
     position: relative;
 }
+
 .nav-item::after {
     content: '';
     position: absolute;
@@ -86,11 +104,12 @@ body, html{
     background-color: #EF9402;
     transition: width 0.3s ease;
 }
-.nav-item:hover::after{
+
+.nav-item:hover::after {
     width: 100%;
 }
 
-.book-now-btn{
+.book-now-btn {
     background-color: #EF9402;
     color: white;
     border: 2px solid #EF9402;
@@ -98,14 +117,81 @@ body, html{
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
-    text-decoration: none;
     transition: all 0.3s ease;
 }
+
 .book-now-btn:hover {
     background-color: white;
     color: #EF9402;
-    border: 2px solid #EF9402;
 }
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 20;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #073670;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* MOBILE ONLY */
+@media (max-width: 767px) {
+    .nav-links {
+        position: absolute;
+        top: 60px; /* below navbar */
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        height: 0;
+        background-color: white;
+        padding: 0;
+        border-bottom: 1px solid #e0e0e0;
+        transition: height 0.4s ease;
+        z-index: 5; /* lower than hamburger */
+    }
+
+    .nav-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 15px 0 15px; /* top + bottom spacing for breathing room */
+    }
+    .hamburger {
+        display: flex;              /* only visible in mobile */
+        position: absolute;
+        top: 50%;                   /* vertical center */
+        transform: translateY(-50%); /* adjust to exact middle */
+        right: 20px;                /* stay at right edge */
+        z-index: 10;                /* above nav-links */
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
+}
+
 
 /* ---------------- HERO SECTION ---------------- */
 .hero-section {
@@ -116,7 +202,7 @@ body, html{
     display: flex;
     align-items: center;
     position: relative;
-    min-height: 70vh;
+    min-height: 80vh;
     height: auto;
 }
 
@@ -161,17 +247,18 @@ body, html{
 
 /* FLUID FONTS using clamp() */
 .hero-text h1 {
-    font-size: clamp(2rem, 4vw + 1rem, 5rem); /* min 2rem, max 5rem */
+    font-size: clamp(2rem, 2.5vw + 1rem, 5rem); /* slightly smaller slope for small desktops */
     font-weight: 700;
     margin-bottom: 15px;
     line-height: 1.1;
 }
 
 .hero-text p {
-    font-size: clamp(1rem, 1.5vw + 0.5rem, 2rem); /* min 1rem, max 1.8rem */
+    font-size: clamp(1rem, 1vw + 0.5rem, 1.8rem);
     font-weight: 300;
     margin-bottom: 35px;
 }
+
 
 /* Buttons */
 .hero-buttons {
@@ -181,11 +268,11 @@ body, html{
 }
 
 .btn {
-    padding: 12px 28px;
+    padding: 12px 28px; /* base padding */
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem); /* less aggressive scaling */
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -229,6 +316,7 @@ body, html{
 
     .hero-content {
         padding-left: 100px;
+        max-width: 1100px;
     }
 }
 
@@ -236,11 +324,16 @@ body, html{
 @media (max-width: 1439px) and (min-width: 1024px) {
     .hero-section {
         padding: 60px 5%;
-        background-position: center 45%;
+        background-position: center 70%;
+        min-height: 80vh;
     }
-
     .hero-content {
-        padding-left: 70px;
+        padding-left: 40px;
+        max-width: 900px;
+    }
+    .btn{
+        font-size: 1rem;
+        padding: 10px 25px;
     }
 }
 

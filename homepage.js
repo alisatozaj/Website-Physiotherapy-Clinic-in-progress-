@@ -55,6 +55,23 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(grid);
     });
 
+    
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.style.height && navLinks.style.height !== '0px';
+
+    if (isOpen) {
+        navLinks.style.height = '0';
+    } else {
+        // set height to the inner container's scrollHeight
+        const inner = navLinks.querySelector('.nav-inner');
+        navLinks.style.height = inner.scrollHeight + 'px';
+    }
+
+    hamburger.classList.toggle('active');
+});
 });
 
 // Using a standard jQuery ready function to make sure Slick is initialized correctly
