@@ -5,8 +5,8 @@ body, html{
     font-family: "Outfit",sans-serif;
     scroll-behavior: smooth;
 }
-/* TOP RIBBON */
-.top-ribbon {
+
+.top-ribbon{
     background-color: #073670;
     color: white;
     padding: 10px 20px;
@@ -16,85 +16,20 @@ body, html{
     position: sticky;
     top: 0;
     z-index: 1000;
-    flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
-/* Contact section */
-.contact-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+.contact-info .info-item{
+    margin-right: 20px;
 }
-
-.contact-info .info-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    white-space: nowrap;
+.contact-info .info-item i{
+    margin-right: 5px;
 }
-
-/* Social icons */
-.social-media {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.social-media a {
+.social-media a{
     color: white;
     font-size: 18px;
+    margin-left: 15px;
     text-decoration: none;
 }
-
-/* -------------- TABLETS -------------- */
-@media (max-width: 1023px) {
-    .top-ribbon {
-        padding: 8px 15px;
-        justify-content: center;
-        gap: 10px;
-        text-align: center;
-    }
-
-    .contact-info {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .social-media {
-        justify-content: center;
-    }
-}
-
-/* -------------- PHONES (FIXED SLIM VERSION) -------------- */
-@media (max-width: 767px) {
-    .top-ribbon {
-        flex-direction: row;          /* no stacking */
-        justify-content: space-between;
-        align-items: center;
-        padding: 6px 10px;            /* much slimmer */
-        gap: 0;
-    }
-
-    .contact-info {
-        flex-direction: row;
-        gap: 12px;
-        font-size: 13px;              /* slightly smaller */
-    }
-
-    .contact-info .info-item {
-        white-space: nowrap;
-    }
-
-    .social-media {
-        gap: 10px;
-    }
-
-    .social-media a {
-        font-size: 16px;
-    }
-}
-
 
 /* Navbar */
 .navbar {
@@ -448,15 +383,16 @@ body, html{
         gap: 15px;
     }
 }
+
+
 /*info features*/
 .info-features {
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    flex-wrap: nowrap; 
     gap: 30px;
     background-color: #073670;
-    padding: 40px 50px;
-    flex-wrap: wrap; /* allows wrapping for smaller screens */
+    padding: 30px 20px;
 }
 
 .feature-box {
@@ -467,23 +403,22 @@ body, html{
     background-color: #13417b;
     padding: 25px;
     border-radius: 15px;
-    flex: 1;
-    min-width: 260px; /* ensures wrapping happens gracefully */
+    /* Default: Tablet/Small Desktop settings */
+    flex: 0 1 350px; 
+    max-width: 350px;
     position: relative;
+    justify-content: flex-start; 
 }
 
-/* Vertical divider for DESKTOP only */
-@media (min-width: 1024px) {
-    .feature-box:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        right: -15px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 2px;
-        height: 70%;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
+.feature-box:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .feature-icon {
@@ -493,6 +428,7 @@ body, html{
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    background-color: transparent;
 }
 
 .feature-icon i {
@@ -511,63 +447,46 @@ body, html{
     margin: 0;
 }
 
-/* ---------- Tablets (768–1023px) ---------- */
-@media (max-width: 1023px) {
-    .info-features {
-        padding: 30px 20px;
-        gap: 25px;
-    }
-
+/* --- LARGE DESKTOP (E.G., > 1600px) --- */
+@media (min-width: 1600px) {
     .feature-box {
-        padding: 20px;
+        /* Allow slight growth (0.5) and increase the max size */
+        flex: 0.5 1 400px;
+        max-width: 450px;
+    }
+}
+
+/* This media query removes the separator when the cards are forced to shrink on tablets, 
+   as the space between them might be too small for the separator. (Same as before)*/
+@media (max-width: 1150px) {
+    .feature-box:not(:last-child)::after {
+        content: none;
+    }
+}
+
+/* MOBILE (< 768px) */
+@media (max-width: 768px) {
+    .info-features {
+        flex-wrap: wrap; 
+        flex-direction: column; 
+        align-items: stretch;
         gap: 15px;
-    }
-
-    .feature-icon i {
-        font-size: 28px;
-    }
-
-    .feature-content h3 {
-        font-size: 16px;
-    }
-
-    .feature-content p {
-        font-size: 13px;
-    }
-}
-
-/* ---------- Phones (≤ 767px) ---------- */
-@media (max-width: 767px) {
-    .info-features {
-        flex-direction: column;
-        padding: 25px 15px;
-        gap: 20px;
+        padding: 20px 15px;
     }
 
     .feature-box {
-        width: 100%;
-        padding: 18px;
+        flex: 1 1 100%; 
+        max-width: none;
+        flex-direction: row; 
         justify-content: flex-start;
+        text-align: left;
+        padding: 20px;
     }
-
+    
     .feature-icon {
-        width: 50px;
-        height: 50px;
-    }
-
-    .feature-icon i {
-        font-size: 26px;
-    }
-
-    .feature-content h3 {
-        font-size: 15px;
-    }
-
-    .feature-content p {
-        font-size: 13px;
+        margin-bottom: 0;
     }
 }
-
 /* TREATMENTS SECTION --------------------------------*/
 .treatments-section {
     padding: 50px 0px; 
