@@ -476,7 +476,7 @@ body, html{
 }
 
 
-/*info features*/
+/*info feature-------------------------------------------------------------------*/
 .info-features {
     display: flex;
     justify-content: center;
@@ -578,7 +578,7 @@ body, html{
         margin-bottom: 0;
     }
 }
-/* TREATMENTS SECTION --------------------------------*/
+/* TREATMENTS SECTION ----------------------------------------------------------------------*/
 .treatments-section {
     padding: 50px 0px; 
     background-color: #f8f8f8;
@@ -682,15 +682,94 @@ body, html{
     object-fit: cover;
 }
 
-@media (max-width: 768px) {
-    .treatments-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* =============== TABLETS (768px – 1023px) =============== */
+@media (max-width: 1023px) and (min-width: 768px) {
+
+    .treatments-section {
+        padding: 40px 0;
     }
-    .treatments-title {
-        font-size: 24px;
+
+    .treatments-header {
+        margin-bottom: 40px;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .treatments-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+        gap: 20px;
+    }
+
+    .treatments-card {
+        height: auto;                  /* allow auto height */
+        padding: 20px;
+    }
+
+    .treatments-image-card {
+        height: 250px;                 /* slightly smaller */
+    }
+
+    .treatments-card h3 {
+        font-size: 18px;
+    }
+
+    .treatments-card p {
+        font-size: 14px;
     }
 }
 
+
+/* =============== MOBILE (0 – 767px) =============== */
+@media (max-width: 767px) {
+
+    .treatments-section {
+        padding: 35px 0;
+    }
+
+    .treatments-header {
+        margin-bottom: 35px;
+        margin-top: 20px;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+    }
+
+    .treatments-grid {
+        grid-template-columns: 1fr;   /* one column on mobile */
+        gap: 20px;
+    }
+
+    .treatments-card {
+        height: auto;
+        padding: 20px;
+    }
+
+    .treatments-image-card {
+        height: 220px;                /* mobile-optimized image */
+    }
+
+    .treatments-card .treatments-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+
+    .treatments-card h3 {
+        font-size: 17px;
+    }
+
+    .treatments-card p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .read-more {
+        font-size: 14px;
+    }
+}
 
 /*services section --------------------------------*/
 .services-section {
