@@ -849,6 +849,55 @@ body, html{
     color: #EF9402;
     border-color: #EF9402;
 }
+
+/*staff bio*/
+.staff-bio{
+    display: flex;
+    align-items: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+}
+.staff-profile{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.staff-profile img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.profile-text span{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0d3b66;
+    display: block;
+}
+.profile-text p{
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+.counter-box{
+    display: flex;
+    gap: 20px;
+}
+.count-item{
+    text-align: center;
+}
+.count-item .count{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0d3b66;
+}
+.count-item p{
+    font-size: 14px;
+    margin: 0;
+}
+
 /* ================= TABLETS (768px – 1023px) ================= */
 @media (max-width: 1023px) and (min-width: 768px) {
 
@@ -1018,8 +1067,6 @@ body, html{
     }
 }
 
-
-
 /*services section --------------------------------*/
 .services-section {
     padding: 100px 50px;
@@ -1032,6 +1079,7 @@ body, html{
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 20px;
 }
 .sub-heading {
     font-size: 14px;
@@ -1133,55 +1181,63 @@ body, html{
     flex-grow: 1;
     margin-top: 10px;
 }
+/* Hide mobile button by default, desktop button visible */
+.mobile-btn {
+    display: none;
+}
+
+/* Only show desktop button on large screens */
+.desktop-btn {
+    display: inline-flex;
+}
+/* Tablet: 768px – 1023px */
+@media (max-width: 1023px) and (min-width: 768px) {
+     .services-header h2 {
+        font-size: 2.2rem; /* smaller for tablet */
+    }
+
+    .card-content h3 {
+        font-size: 16px;
+    }
+
+    .card-content p {
+        font-size: 13px;
+    }
+    .desktop-btn {
+        display: none !important; /* force hide desktop button */
+    }
+    .mobile-btn {
+        display: flex !important; /* show mobile button */
+        margin: 20px auto 0 auto; /* center below grid */
+        justify-content: center;
+    }
+}
+
+/* Mobile: 0 – 767px */
+@media (max-width: 767px) {
+    .desktop-btn {
+        display: none !important;
+    }
+    .mobile-btn {
+        display: flex !important;
+        margin: 15px auto 0 auto;
+        justify-content: center;
+        width: auto;
+    }
+    .services-header h2 {
+        font-size: 1.8rem; /* smaller for mobile */
+    }
+
+    .card-content h3 {
+        font-size: 15px;
+    }
+
+    .card-content p {
+        font-size: 12px;
+    }
+}
 
 
-/*staff bio*/
-.staff-bio{
-    display: flex;
-    align-items: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 15px;
-}
-.staff-profile{
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-.staff-profile img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-.profile-text span{
-    font-size: 18px;
-    font-weight: 600;
-    color: #0d3b66;
-    display: block;
-}
-.profile-text p{
-    font-size: 14px;
-    color: #555;
-    margin: 0;
-}
-.counter-box{
-    display: flex;
-    gap: 20px;
-}
-.count-item{
-    text-align: center;
-}
-.count-item .count{
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0d3b66;
-}
-.count-item p{
-    font-size: 14px;
-    margin: 0;
-}
 
 /*testimonials----------------------------------------------------------*/
 .testimonials-section {
