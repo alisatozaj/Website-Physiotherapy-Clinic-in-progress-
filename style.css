@@ -1353,6 +1353,12 @@ body, html{
     .slick-dots{
         bottom: -30px;
     }
+    .slick-prev {
+        left: 5px; /* move inside container */
+    }
+    .slick-next {
+        right: 5px; /* move inside container */
+    }
     .results-section h2 {
         font-size: 2.2rem;
     }
@@ -1374,6 +1380,12 @@ body, html{
 @media (max-width: 767px) {
     .slick-dots{
         bottom: -25px;
+    }
+    .slick-prev {
+        left: 5px; /* keep visible */
+    }
+    .slick-next {
+        right: 5px; /* keep visible */
     }
     .results-section h2 {
         font-size: 1.8rem;
@@ -1553,6 +1565,31 @@ body, html{
 .service-card.is-visible, .testimonial-card.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+/* Tablets: 768px – 1023px */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .testimonials-section h2 {
+        font-size: 2.4rem; /* smaller title for tablet */
+    }
+    .testimonial-card .review-text {
+        font-size: 1rem; /* smaller text for tablet */
+    }
+    .reviewer-name {
+        font-size: 14px;
+    }
+}
+
+/* Mobile: 0 – 767px */
+@media (max-width: 767px) {
+    .testimonials-section h2 {
+        font-size: 2rem; /* fit smaller screens */
+    }
+    .testimonial-card .review-text {
+        font-size: 0.9rem;
+    }
+    .reviewer-name {
+        font-size: 13px;
+    }
 }
 
 
