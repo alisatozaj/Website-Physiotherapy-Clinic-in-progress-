@@ -6,30 +6,74 @@ body, html{
     scroll-behavior: smooth;
 }
 
-.top-ribbon{
+.top-ribbon {
     background-color: #073670;
     color: white;
-    padding: 10px 20px;
+    padding: 6px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    font-size: 0.9rem;
 }
 
-.contact-info .info-item{
-    margin-right: 20px;
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
-.contact-info .info-item i{
-    margin-right: 5px;
-}
-.social-media a{
+
+.contact-info .info-item a {
     color: white;
-    font-size: 18px;
-    margin-left: 15px;
     text-decoration: none;
 }
+
+.contact-info .info-item i {
+    margin-right: 6px;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.social-media a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* ---------------- MOBILE FIX ---------------- */
+@media (max-width: 767px) {
+
+    .top-ribbon {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Hide email text ONLY on mobile */
+    .email-desktop {
+        display: none;
+    }
+
+    /* Keep phone visible, but shrink spacing */
+    .contact-info {
+        gap: 10px;
+    }
+
+    .contact-info .info-item {
+        white-space: nowrap;
+    }
+
+    /* Icons line stays clean and inline */
+    .social-media a {
+        font-size: 17px;
+    }
+}
+
 
 /* Navbar */
 .navbar {
@@ -192,7 +236,6 @@ body, html{
     }
 }
 
-
 /* ---------------- HERO SECTION ---------------- */
 .hero-section {
     background-image: url('images/bg10.png');
@@ -215,9 +258,9 @@ body, html{
     width: 60%;
     height: 100%;
     background: linear-gradient(to right,
-                                rgba(5, 53, 113, 0.7) 0%,
-                                rgba(6, 55, 115, 0.5) 60%,
-                                rgba(5, 58, 122, 0) 100%);
+                                 rgba(5, 53, 113, 0.7) 0%,
+                                 rgba(6, 55, 115, 0.5) 60%,
+                                 rgba(5, 58, 122, 0) 100%);
     backdrop-filter: blur(1px);
 }
 
@@ -338,21 +381,20 @@ body, html{
 }
 
 /* Tablets (768px–1023px) */
-@media (max-width: 1023px) {
+@media (max-width: 1023px) and (min-width: 768px) {
+
     .hero-section {
-        padding: 80px 5%;
-        background-position: center 50%;
+        display: flex;
+        justify-content: center;   /* center horizontally */
+        align-items: center;       /* center vertically */
+        padding: 40px 0;           /* reduce huge padding */
+        min-height: 80vh;          /* guarantees vertical center */
+        text-align: center;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
-        justify-content: center;
-    }
-
-    .btn {
-        width: 100%;
-        justify-content: center;
+    .hero-content {
+        padding: 0 5%;
+        max-width: 600px;          /* keeps it neat */
     }
 
     .hero-text {
@@ -363,6 +405,31 @@ body, html{
     .hero-text::before {
         display: none;
     }
+
+    /* smaller hero fonts for tablet */
+    .hero-text h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    /* buttons centered & smaller */
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn {
+        width: auto;
+        max-width: 260px;
+        padding: 10px 22px;
+        font-size: 1rem;
+        justify-content: center;
+    }
 }
 
 /* Phones (0–767px) */
@@ -370,6 +437,8 @@ body, html{
     .hero-section {
         padding: 60px 0;
         text-align: center;
+        min-height: 70vh;
+        background-position: -550px center; 
     }
 
     .hero-content {
@@ -380,7 +449,29 @@ body, html{
     .hero-buttons {
         justify-content: center;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .btn {
+        width: auto;              /* no more full width */
+        max-width: 250px;         /* keeps them small */
+        padding: 10px 20px;       /* smaller padding */
+        font-size: 0.9rem;        /* fits mobile */
+        justify-content: center;
+        white-space: nowrap;      /* prevents weird wraps */
+    }
+
+    .hero-text::before {
+        display: none !important;
+    }
+    .hero-text h1 {
+        font-size: 2rem;          /* perfect size for mobile */
+        line-height: 1.2;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
     }
 }
 
