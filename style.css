@@ -238,7 +238,7 @@ body, html{
 /* ---------------- HERO SECTION ---------------- */ 
 .hero-section {
     position: relative;
-    min-height: 80vh;
+    min-height: 105vh;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -350,10 +350,6 @@ body, html{
 
 /* ---------------- 1440px+ ---------------- */
 @media (min-width: 1440px) {
-    .hero-img {
-        object-position: center 100%; /* pushes the image DOWN */
-    }
-
     .hero-content {
         padding-left: 100px;
         max-width: 1100px;
