@@ -238,7 +238,7 @@ body, html{
 
 /* ---------------- HERO SECTION ---------------- */
 .hero-section {
-    background-image: url('images/desktopHero.webp');
+    /* background-image: url('images/desktopHero.webp'); */
     background-position: center 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -247,8 +247,18 @@ body, html{
     position: relative;
     min-height: 80vh;
     height: auto;
+    overflow: hidden;
 }
-
+.hero-section picture,
+.hero-section img.hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* behind the text/buttons */
+}
 /* Overlay gradient */
 .hero-section::after {
     content: '';
