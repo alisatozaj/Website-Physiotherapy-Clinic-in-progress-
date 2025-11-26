@@ -238,7 +238,7 @@ body, html{
 
 /* ---------------- HERO SECTION ---------------- */
 .hero-section {
-    background-image: url('images/bg10.png');
+    background-image: url('images/desktopHero.webp');
     background-position: center 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -435,6 +435,7 @@ body, html{
 /* Phones (0–767px) */
 @media (max-width: 767px) {
     .hero-section {
+        background-image: url('images/mobileHero.webp');
         padding: 60px 0;
         text-align: center;
         min-height: 70vh;
