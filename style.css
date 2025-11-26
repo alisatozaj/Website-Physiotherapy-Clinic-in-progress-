@@ -391,7 +391,7 @@ body, html{
 @media (max-width: 767px) {
 
     .hero-img {
-        object-position: -800px center; /* shift left on mobile */
+        object-position: -600px center; /* shift left on mobile */
     }
 
     .hero-content {
