@@ -235,31 +235,29 @@ body, html{
         cursor: pointer;
     }
 }
-
-/* ---------------- HERO SECTION ---------------- */
+/* ---------------- HERO SECTION ---------------- */ 
 .hero-section {
-    /* background-image: url('images/desktopHero.webp'); */
-    background-position: center 50%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
     position: relative;
     min-height: 80vh;
-    height: auto;
+    display: flex;
+    align-items: center;
     overflow: hidden;
 }
+
+/* Handle image ONLY through <picture> */
 .hero-section picture,
-.hero-section img.hero-img {
+.hero-img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1; /* behind the text/buttons */
+    object-position: center 100%;
+    z-index: -1;
 }
-/* Overlay gradient */
+
+/* Overlay */
 .hero-section::after {
     content: '';
     position: absolute;
@@ -268,19 +266,18 @@ body, html{
     width: 60%;
     height: 100%;
     background: linear-gradient(to right,
-                                 rgba(5, 53, 113, 0.7) 0%,
-                                 rgba(6, 55, 115, 0.5) 60%,
-                                 rgba(5, 58, 122, 0) 100%);
-    backdrop-filter: blur(1px);
+        rgba(5, 53, 113, 0.7) 0%,
+        rgba(6, 55, 115, 0.5) 60%,
+        rgba(5, 58, 122, 0) 100%);
 }
 
 /* Content */
 .hero-content {
     position: relative;
-    z-index: 2;
-    color: white;
+    z-index: 3;
     max-width: 1000px;
     padding: 40px 5%;
+    color: white;
 }
 
 .hero-text {
@@ -295,23 +292,20 @@ body, html{
     top: 0;
     height: 100%;
     width: 3px;
-    background-color: white;
+    background: white;
 }
 
-/* FLUID FONTS using clamp() */
 .hero-text h1 {
-    font-size: clamp(2rem, 2.5vw + 1rem, 5rem); /* slightly smaller slope for small desktops */
+    font-size: clamp(2rem, 2.5vw + 1rem, 5rem);
     font-weight: 700;
-    margin-bottom: 15px;
     line-height: 1.1;
+    margin-bottom: 15px;
 }
 
 .hero-text p {
     font-size: clamp(1rem, 1vw + 0.5rem, 1.8rem);
-    font-weight: 300;
     margin-bottom: 35px;
 }
-
 
 /* Buttons */
 .hero-buttons {
@@ -321,50 +315,43 @@ body, html{
 }
 
 .btn {
-    padding: 12px 28px; /* base padding */
+    padding: 12px 28px;
     border-radius: 50px;
-    text-decoration: none;
     font-weight: 600;
-    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem); /* less aggressive scaling */
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 10px;
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
+    text-decoration: none;
+    transition: .3s;
 }
 
 .btn-white {
-    background-color: white;
+    background: white;
     color: #073670;
+}
+
+.btn-white:hover {
+    background: transparent;
+    color: white;
     border: 2px solid white;
 }
 
 .btn-orange {
-    background-color: #EF9402;
-    color: white;
-    border: 2px solid #EF9402;
-}
-
-.btn-white:hover {
-    background-color: transparent;
+    background: #EF9402;
     color: white;
 }
 
 .btn-orange:hover {
-    background-color: transparent;
+    background: transparent;
     color: #EF9402;
+    border: 2px solid #EF9402;
 }
 
-.btn i {
-    font-size: 1.2rem;
-}
-
-/* ---------------- RESPONSIVE BREAKPOINTS ---------------- */
-
-/* Big-desktop screens (1440px+) */
+/* ---------------- 1440px+ ---------------- */
 @media (min-width: 1440px) {
-    .hero-section {
-        height: 80vh;
-        background-position: center 100%; /* focus lower */
+    .hero-img {
+        object-position: center 100%; /* pushes the image DOWN */
     }
 
     .hero-content {
@@ -373,83 +360,38 @@ body, html{
     }
 }
 
-/* Small desktops (1024px–1439px) */
-@media (max-width: 1439px) and (min-width: 1024px) {
-    .hero-section {
-        padding: 60px 5%;
-        background-position: center 70%;
-        min-height: 80vh;
-    }
-    .hero-content {
-        padding-left: 40px;
-        max-width: 900px;
-    }
-    .btn{
-        font-size: 1rem;
-        padding: 10px 25px;
-    }
-}
-
-/* Tablets (768px–1023px) */
-@media (max-width: 1023px) and (min-width: 768px) {
+/* ---------------- TABLET ---------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
 
     .hero-section {
-        display: flex;
-        justify-content: center;   /* center horizontally */
-        align-items: center;       /* center vertically */
-        padding: 40px 0;           /* reduce huge padding */
-        min-height: 80vh;          /* guarantees vertical center */
+        justify-content: center;
         text-align: center;
     }
 
     .hero-content {
+        max-width: 650px;
         padding: 0 5%;
-        max-width: 600px;          /* keeps it neat */
     }
 
     .hero-text {
         padding-left: 0;
-        text-align: center;
     }
 
     .hero-text::before {
         display: none;
     }
 
-    /* smaller hero fonts for tablet */
-    .hero-text h1 {
-        font-size: 2.4rem;
-    }
-
-    .hero-text p {
-        font-size: 1.1rem;
-        margin-bottom: 25px;
-    }
-
-    /* buttons centered & smaller */
     .hero-buttons {
         flex-direction: column;
         align-items: center;
-        gap: 12px;
-    }
-
-    .btn {
-        width: auto;
-        max-width: 260px;
-        padding: 10px 22px;
-        font-size: 1rem;
-        justify-content: center;
     }
 }
 
-/* Phones (0–767px) */
+/* ---------------- MOBILE ---------------- */
 @media (max-width: 767px) {
-    .hero-section {
-        background-image: url('images/mobileHero.webp');
-        padding: 60px 0;
-        text-align: center;
-        min-height: 70vh;
-        background-position: -450px center; 
+
+    .hero-img {
+        object-position: -450px center; /* shift left on mobile */
     }
 
     .hero-content {
@@ -458,33 +400,29 @@ body, html{
     }
 
     .hero-buttons {
-        justify-content: center;
         flex-direction: column;
-        gap: 12px;
         align-items: center;
     }
 
     .btn {
-        width: auto;              /* no more full width */
-        max-width: 250px;         /* keeps them small */
-        padding: 10px 20px;       /* smaller padding */
-        font-size: 0.9rem;        /* fits mobile */
-        justify-content: center;
-        white-space: nowrap;      /* prevents weird wraps */
+        max-width: 250px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 
     .hero-text::before {
-        display: none !important;
+        display: none;
     }
+
     .hero-text h1 {
-        font-size: 2rem;          /* perfect size for mobile */
-        line-height: 1.2;
+        font-size: 2rem;
     }
 
     .hero-text p {
         font-size: 1rem;
     }
 }
+
 
 
 /*info feature-------------------------------------------------------------------*/
