@@ -620,7 +620,7 @@ body, html{
     border-radius: 10px;
     padding: 25px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    min-height: 290px; 
+    min-height: 250px; 
     display: flex;
     flex-direction: column;
 }
@@ -672,8 +672,7 @@ body, html{
 .treatments-image-card {
     border-radius: 10px;
     overflow: hidden;
-    height: auto;
-aspect-ratio: 4/3;
+    min-height: 300px; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
