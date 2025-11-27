@@ -201,9 +201,10 @@ body, html{
 
 /* MOBILE ONLY */
 @media (max-width: 767px) {
+
     .nav-links {
         position: absolute;
-        top: 60px; /* below navbar */
+        top: 100%;
         right: 0;
         width: 100%;
         flex-direction: column;
@@ -211,30 +212,29 @@ body, html{
         overflow: hidden;
         height: 0;
         background-color: white;
-        padding: 0;
         border-bottom: 1px solid #e0e0e0;
         transition: height 0.4s ease;
-        z-index: 5; /* lower than hamburger */
+        z-index: 5;
     }
 
     .nav-inner {
         flex-direction: column;
-        align-items: center;
         gap: 20px;
-        padding: 15px 0 15px; /* top + bottom spacing for breathing room */
+        padding: 20px 0;
     }
+
     .hamburger {
-        display: flex;              /* only visible in mobile */
-        position: absolute;
-        top: 50%;                   /* vertical center */
-        transform: translateY(-50%); /* adjust to exact middle */
-        right: 20px;                /* stay at right edge */
-        z-index: 10;                /* above nav-links */
+        display: flex;
+        position: relative;
+        margin-left: auto;
+        right: 0;
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
+        z-index: 20;
     }
 }
+
 /* ---------------- HERO SECTION ---------------- */ 
 .hero-section {
     position: relative;
