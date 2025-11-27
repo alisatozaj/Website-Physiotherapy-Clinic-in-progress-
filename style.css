@@ -238,14 +238,12 @@ body, html{
 /* ---------------- HERO SECTION ---------------- */ 
 .hero-section {
     position: relative;
-    min-height: 105vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
     overflow: hidden;
 }
 
-/* Handle image ONLY through <picture> */
-.hero-section picture,
 .hero-img {
     position: absolute;
     top: 0;
@@ -253,7 +251,7 @@ body, html{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 100%;
+    object-position: center 80%; /* adjust how low the image appears */
     z-index: -1;
 }
 
@@ -321,7 +319,7 @@ body, html{
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: clamp(0.9rem, 1vw + 0.5rem, 1.2rem);
+    font-size: clamp(0.9rem, 1vw + 0.5rem, 1rem);
     text-decoration: none;
     transition: .3s;
 }
@@ -350,9 +348,20 @@ body, html{
 
 /* ---------------- 1440px+ ---------------- */
 @media (min-width: 1440px) {
+    .hero-section {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
     .hero-content {
         padding-left: 100px;
         max-width: 1100px;
+    }
+    .btn {
+        padding: 15px 24px;
+        font-size: 1.5rem; 
     }
 }
 
@@ -360,15 +369,18 @@ body, html{
 @media (min-width: 768px) and (max-width: 1023px) {
 
     .hero-section {
-        justify-content: center;
+        min-height: 70vh; /* shorter */
         text-align: center;
+        justify-content: center;
+    }
+    .hero-img {
+        object-position: center 60%; /* show more of the top */
     }
 
     .hero-content {
         max-width: 650px;
-        padding: 0 5%;
+        padding: 20px 5%;
     }
-
     .hero-text {
         padding-left: 0;
     }
@@ -386,8 +398,12 @@ body, html{
 /* ---------------- MOBILE ---------------- */
 @media (max-width: 767px) {
 
+    .hero-section {
+        min-height: 60vh; /* way shorter */
+    }
+
     .hero-img {
-        object-position: -600px center; /* shift left on mobile */
+        object-position: center 50%; /* center the image */
     }
 
     .hero-content {
